@@ -1,4 +1,3 @@
-
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -21,18 +20,21 @@ function getCookie(cname) {
   return "";
 }
 
-function checkCookie() {
-    var user = getCookie("username");
-    if (user != "") {
-        document.getElementById("warmWelcome").innerHTML = "Miresevini, " + user;
-    }
-    else {
-        document.getElementById("typeUser").value;
- 
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
-    }
+function saveUsername() {
+  var user = document.getElementById("typeUser").value;
+  if (user !== "") {
+    setCookie("username", user, 365);
+    window.location.href = "index2.html";
+  } else {
+    alert("Ju lutem shkruani nje emer para se te vazhdoni.");
+  }
 }
 
-
+function checkCookie() {
+  var user = getCookie("username");
+  if (user !== "") {
+    document.getElementById("warmWelcome").innerHTML = "Miresevini, " + user;
+  } else {
+    document.getElementById("warmWelcome").innerHTML = "Nuk u gjet asnje perdorues.";
+  }
+}
